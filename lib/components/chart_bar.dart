@@ -17,13 +17,17 @@ class ChartBar extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.end,
       children: <Widget>[
         Container(
-          height: 20,
-          child: FittedBox(
+          height: 32,
+          child: Container(
+            margin: EdgeInsets.symmetric(
+              horizontal: 6,
+            ),
             child: Text(
               '${value?.toStringAsFixed(2)}',
               style: TextStyle(
-                fontSize: 10
+                fontSize: 14
               ),
+              textAlign: TextAlign.center,
             ),
           ),
         ),
@@ -44,7 +48,7 @@ class ChartBar extends StatelessWidget {
                 heightFactor: percentage,
                 child: Container(
                   decoration: BoxDecoration(
-                    color: Theme.of(context).primaryColor,
+                    color: Colors.purple[800],
                     borderRadius: BorderRadius.circular(5),
                   ),
                 ),

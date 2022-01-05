@@ -63,10 +63,17 @@ class _TransactionFormState extends State<TransactionForm> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
-            Icon(
-              Icons.expand_more_rounded,
-              size: 48.0,
-              color: Colors.grey,
+            Container(
+              margin: EdgeInsets.symmetric(
+                vertical: 4
+              ),
+              height: 32,
+              child: IconButton(
+                icon: Icon(Icons.maximize_rounded),
+                color: Colors.grey,
+                iconSize: 48.0,
+                onPressed: () => {Navigator.of(context).pop()},
+              ),
             ),
             TextField(
               controller: _titleController,
@@ -111,6 +118,7 @@ class _TransactionFormState extends State<TransactionForm> {
                           'Selecionar Data',
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
+                            color: Colors.purple[800]
                           ),
                         ),
                         onPressed: _showDatePicker,
@@ -123,7 +131,7 @@ class _TransactionFormState extends State<TransactionForm> {
                         fit: FlexFit.tight,
                         child: TextButton(
                           style: ButtonStyle(
-                            backgroundColor: MaterialStateProperty.all(Colors.purple[300]),
+                            backgroundColor: MaterialStateProperty.all(Colors.purple[800]),
                             shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                               RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(12)

@@ -43,7 +43,6 @@ class TransactionList extends StatelessWidget {
             color: Colors.purple[100],
           ),
           margin: EdgeInsets.symmetric(
-            horizontal: 20,
             vertical: 10
           ),
           child: Padding(
@@ -58,7 +57,7 @@ class TransactionList extends StatelessWidget {
                       Text(
                         'R\$${tr.value}',
                         style: TextStyle(
-                          color: Colors.purple
+                          color: Colors.purple[800]
                         ),
                       ),
                       Text(
@@ -75,7 +74,7 @@ class TransactionList extends StatelessWidget {
                 Flexible(
                   child: IconButton(
                     icon: Icon(Icons.delete),
-                    color: Theme.of(context).errorColor,
+                    color: Colors.purple[800],
                     onPressed: () => onRemove(tr.id),
                   ),
                   flex: 1,

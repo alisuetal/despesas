@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'dart:math';
@@ -100,27 +99,6 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    /*final appBar = AppBar(
-      title: Text(
-        'Despesas Pessoais',
-        style: TextStyle(
-          color: Colors.black,
-          fontSize: 24,
-        ),
-      ),
-      
-      actions: <Widget>[
-        IconButton(
-          icon: Icon(
-            Icons.add,
-            color: Colors.black,
-            size: 32,
-          ),
-          onPressed: () => _openTransactionFormModal(context),
-        ),
-      ],
-    );*/
-
     final appBar = PreferredSize(
       preferredSize: Size.fromHeight(80.0),
       child: Column(
@@ -151,8 +129,8 @@ class _MyHomePageState extends State<MyHomePage> {
     );
 
     final availableHeight = MediaQuery.of(context).size.height -
-        appBar.preferredSize.height -
-        MediaQuery.of(context).padding.top;
+    appBar.preferredSize.height -
+    MediaQuery.of(context).padding.top;
 
     return Scaffold(
       backgroundColor: Colors.purple[50],
@@ -161,33 +139,43 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
-            Container(
-              height: availableHeight * 0.37,
-              child: Chart(_recentTransactions),
-            ),
-            Container(
-              height: availableHeight * 0.08,
+             Container(
+              margin: EdgeInsets.symmetric(
+                horizontal: 20,
+                vertical: 10
+              ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  SizedBox(
-                    height: 20,
+                  Text(
+                    'Gráfico de gastos (últimos 7 dias)',
+                    style: Theme.of(context).textTheme.headline6,
                   ),
                   Container(
-                    margin: EdgeInsets.symmetric(
-                      horizontal: 20
-                    ),
-                    child: Text(
-                      'Transações',
-                      style: Theme.of(context).textTheme.headline6
-                    ),
+                    height: availableHeight * 0.30,
+                    child: Chart(_recentTransactions),
                   ),
-                ]
-              )
+                ],
+              ),
             ),
             Container(
-              height: availableHeight * 0.54,
-              child: TransactionList(_transactions, _deleteTransaction),
+              margin: EdgeInsets.symmetric(
+                horizontal: 20,
+                vertical: 10
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'Transações',
+                    style: Theme.of(context).textTheme.headline6,
+                  ),
+                  Container(
+                    height: availableHeight * 0.565,
+                    child: TransactionList(_transactions, _deleteTransaction),
+                  ),
+                ],
+              ),
             ),
           ],
         ),
@@ -199,6 +187,7 @@ class _MyHomePageState extends State<MyHomePage> {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.all(Radius.circular(12)),
         ),
+        backgroundColor: Colors.purple[800],
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
     );

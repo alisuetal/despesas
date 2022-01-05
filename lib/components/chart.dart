@@ -41,49 +41,34 @@ class Chart extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        SizedBox(
-          height: 20,
-        ),
-        Container(
-          margin: EdgeInsets.symmetric(
-            horizontal: 20
-          ),
-          child: Text(
-            'Transações',
-            style: Theme.of(context).textTheme.headline6
-          ),
-        ),
-        Container(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(10),
-            color: Colors.purple[100],
-          ),
-          margin: EdgeInsets.all(20),
-          child: Padding(
-            padding: const EdgeInsets.all(16),
-            child: Center(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: groupedTransactions.map((tr) {
-                  return Flexible(
-                    fit: FlexFit.tight,
-                    child: ChartBar(
-                      label: tr['day'].toString(),
-                      value: tr['value'] as double,
-                      percentage: _weekTotalValue == 0
-                          ? 0
-                          : (tr['value'] as double) / _weekTotalValue,
-                    ),
-                  );
-                }).toList(),
-              ),
-            ),
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10),
+        color: Colors.purple[100],
+      ),
+      margin: EdgeInsets.symmetric(
+        vertical: 10
+      ),
+      child: Padding(
+        padding: const EdgeInsets.all(16),
+        child: Center(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: groupedTransactions.map((tr) {
+              return Flexible(
+                fit: FlexFit.tight,
+                child: ChartBar(
+                  label: tr['day'].toString(),
+                  value: tr['value'] as double,
+                  percentage: _weekTotalValue == 0
+                      ? 0
+                      : (tr['value'] as double) / _weekTotalValue,
+                ),
+              );
+            }).toList(),
           ),
         ),
-      ],
+      ),
     );
   }
 }
